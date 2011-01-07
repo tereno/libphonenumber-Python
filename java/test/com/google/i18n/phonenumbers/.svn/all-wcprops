@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/58/trunk/java/test/com/google/i18n/phonenumbers
+END
+PhoneNumberUtilTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/58/trunk/java/test/com/google/i18n/phonenumbers/PhoneNumberUtilTest.java
+END
+CountryCodeToRegionCodeMapForTesting.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/57/trunk/java/test/com/google/i18n/phonenumbers/CountryCodeToRegionCodeMapForTesting.java
+END
+AsYouTypeFormatterTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/48/trunk/java/test/com/google/i18n/phonenumbers/AsYouTypeFormatterTest.java
+END
+ExampleNumbersTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/56/trunk/java/test/com/google/i18n/phonenumbers/ExampleNumbersTest.java
+END
+RegexCacheTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/47/trunk/java/test/com/google/i18n/phonenumbers/RegexCacheTest.java
+END

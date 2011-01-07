@@ -1,0 +1,80 @@
+Jan 3rd, 2011
+* Metadata changes:
+  - Updates to JE
+  - Updated comments for GB/GG/IM/JE
+
+November 25th, 2010
+* Metadata changes:
+  - Updates to existing countries: AD, AG, AI, AN, AS, BB, BG, BM, BS, BW, CA, DM, DO, GD, GH, GM,
+    GU, IN, JM, KN, KY, KZ, LB, LC, MP, MS, PR, SY, TC, TT, TZ, US, VC, VG, VI.
+  - Reorganize reg-exes for better readability.
+  - Updated comments.
+
+October 22nd, 2010
+* Metadata changes:
+  - Updates to existing countries: AE, GB, GG, IM, JE
+
+October 15th, 2010
+* Code improvements:
+  - Allowed parsing of numbers that start with "++" or a full-width "+" symbol
+  - Allowed reg-exes for national and possible number patterns to have white space in them in the
+    source XML file
+  - Added a more useful toString method for the phone number proto class
+* Metadata changes:
+  - Updates to existing countries: AF, BF, BO, ES, GB, GG, IM, IS, JE, JE, JP, KR, PE, PT, RU, SE,
+    TT, ZW
+* Bug fixes:
+  - Parsing empty strings with invalid region codes no longer throws a null pointer exception
+
+September 4th, 2010
+* Code improvement:
+  - Added new phone number type: pager
+* Metadata change:
+  - update to existing country: GG, IM, JE, RS, RU
+* Bug fixes:
+  - ArrayOutOfBoundException in AsYouTypeFormatter.getRememberedPosition()
+  - AsYouTypeFormatter for UK childline number
+
+September 1st, 2010
+* Bug fix on KZ metadata.
+
+August 17th, 2010
+* Code improvement:
+  - Refactored BuildMetadataProtoFromXml.java into BuildMetadataFromXml.java and
+    BuildMetadataProtoFromXml.java
+  - Added BuildMetadataProtoFromXml.java and JSArrayBuilder.java
+  - Refactored CountryCodeToRegionCodeMap and CountryCodeToRegionCodeMapForTesting into separate
+    files.
+
+August 16th, 2010
+* Bug fixes
+  - AsYouTypeFormatter for formatting Chinese geographical numbers entered in national format.
+  - AsYouTypeFormatter for formatting Chinese 400/800 numbers entered in national format.
+* Metadata change:
+  - new countries: AM, AN, BH, GL, IS
+  - adding national prefix 1 to all NANPA countries.
+  - update to existing countries: BF, FR, UK, PK, RE
+
+August 4th, 2010
+* Further improve startup performance
+  - Preload no country specific metadata at startup.
+  - Stop creating the file containing mapping from country calling code to region code
+    and loading it at startup; instead, do the initialization in PhoneNumberUtil.
+
+July 31th, 2010
+
+* Improve startup performance
+  - Separate generated metadata binary file to one file per region
+  - Preload US at start up, and load other region at the time when needed
+  - Create a file containing mapping from country calling code to region code,
+    and load it at startup
+  - Same change also applied to unittests
+
+July 30th, 2010
+* Metadata change:
+  - new country: TL
+  - update to existing country: AZ, CN, FR, GH, JO, LA, PG, PK, QA, SZ, UA, VN
+
+* Code improvement
+  - China local number formatting for AsYouTypeFormatter
+  - improve extension parsing to handle number in the form of +1 (645) 123 1234 ext. 910#

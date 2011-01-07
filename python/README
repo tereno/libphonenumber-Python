@@ -1,0 +1,25 @@
+Info:
+====
+Python port of Google's phone number parsing library
+
+How to setup:
+=============
+
+How to update:
+==============
+
+
+
+
+
+Things that I need to watch out for:
+1. protocol buffers
+    - these should use the Python API provided by Google
+
+2. phone number metadata in the XML format
+
+3. if the Java ports change, here's how to map it
+PhoneNumberUtil.java => phonenumberutil.py
+AsYouTypeFormatter.java => asyoutypeformatter.py
+PhoneNumberUtilTest.java => phonenumberutil_test.py
+AsYouTypeFormatterTest.java => asyoutypeformatter_test.py
