@@ -1,0 +1,10 @@
+libphonenumber-Python
+=====================
+
+Status: Incomplete
+
+This is a temporary working library for the Python port of libphonenumber found on Google Code. The Java and JavaScript versions of this library are from there so any updates will be coming from there.
+
+Once, the python port is complete, the code will be moved over.
+
+
