@@ -4,15 +4,6 @@ class PhoneNumber:
 
     # Constructor
     def __init__(self):
-<<<<<<< Updated upstream
-        pass
-
-    # Enum - CountryCodeSource
-    CountryCodeSource = ['FROM_NUMBER_WITH_PLUS_SIGN',
-                         'FROM_NUMBER_WITH_IDD',
-                         'FROM_NUMBER_WITHOUT_PLUS_SIGN',
-                         'FROM_DEFAULT_COUNTRY']
-=======
         self.countryCodeSource_ = CountryCodeSource['FROM_NUMBER_WITH_PLUS_SIGN']
         self.hasCountryCode = False
         self._countryCode = 0
@@ -195,4 +186,3 @@ class PhoneNumber:
         if self.hasCountryCodeSource():
             outputString += ' Country Code Source: ' + self._countryCodeSource
         return outputString
->>>>>>> Stashed changes
