@@ -8,6 +8,7 @@
 # import statements to require the various pieces
 # including the proto buffer SDK
 import logging
+import re
 
 class PhoneNumberUtil:
     # Constants
@@ -23,22 +24,27 @@ class PhoneNumberUtil:
     # Class name that maps country codes to region
     COUNTRY_CODE_TO_REGION_CODE_MAP_CLASS_NAME = "CountryCodeToRegionCodeMap"
 
-    self.currentFilePrefix = META_DATA_FILE_PREFIX;
+    def __init__(self):
+        self.currentFilePrefix = META_DATA_FILE_PREFIX;
+        
+        # Mapping from a country code to the region codes which denote the country/region
+        # represented by that country code. 
+        # When there are multiple countries sharing a country code, the one indicated with
+        # "isMainCountryForCode" in the metadata should be first.
+        self.countryCodeToRegionCodeMap = {} 
+        
+        # Set of countries that the library supports
+        self.supportedCountries = {}
+
+        # Set of countries that share country code 1
+        self.nanpaCountries = {}
 
     # Used for logging purposes
     _LOGGER = logging.getLogger('PhoneNumberUtilLogger')
 
-    # Mapping from a country code to the region codes which denote the country/region
-    # represented by that country code. 
-    # When there are multiple countries sharing a country code, the one indicated with
-    # "isMainCountryForCode" in the metadata should be first.
-    self.countryCodeToRegionCodeMap = {} 
 
-    # Set of countries that the library supports
-    self.supportedCountries = {}
 
-    # Set of countries that share country code 1
-    self.nanpaCountries = {}
+
 
     _NANPA_COUNTRY_CODE = 1;
 
@@ -115,6 +121,7 @@ class PhoneNumberUtil:
     
     # A list of all country codes where national significant numbers (excluding any national prefix)
     # exist that start with a leading zero.
+    # MIGHT BE INCORRECT SINCE JAVA USES HASHSET
     LEADING_ZERO_COUNTRIES = frozenset([
         39,  # Italy
         47,  # Norway
@@ -124,3 +131,19 @@ class PhoneNumberUtil:
         241, # Gabon
         379, # Vatican City
     ])
+
+    # Pattern that makes it easy to distinguish whether a country has a unique international dialing
+    # prefix or not. If a country has a unique international prefix (e.g. 011 in USA), it will be
+    # represented as a string that contains a sequence of ASCII digits. If there are multiple
+    # available international prefixes in a country, they will be represented as a regex string that
+    # always contains character(s) other than ASCII digits.
+    # Note this regex also includes tilde, which signals waiting for the tone.
+    UNIQUE_INTERNATIONAL_PREFIX = re.compile("[\\d]+(?:[~\u2053\u223C\uFF5E][\\d]+)?")
+
+    # Regular expression of acceptable punctuation found in phone numbers. This excludes punctuation
+    # found as a leading character only.
+    # This consists of dash characters, white space characters, full stops, slashes,
+    # square brackets, parentheses and tildes. It also includes the letter 'x' as that is found as a
+    # placeholder for carrier information in some phone numbers.
+    VALID_PUNCTUATION = "-x\u2010-\u2015\u2212\uFF0D-\uFF0F " + \
+        "\u00A0\u200B\u2060\u3000()\uFF08\uFF09\uFF3B\uFF3D.\\[\\]/~\u2053\u223C\uFF5E"

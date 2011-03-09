@@ -1,10 +1,15 @@
 # This class is based on Phonenumber.java
 
 class PhoneNumber:
+    # Enum - CountryCodeSource
+    CountryCodeSource = {'FROM_NUMBER_WITH_PLUS_SIGN' : 0,
+                         'FROM_NUMBER_WITH_IDD' : 1,
+                         'FROM_NUMBER_WITHOUT_PLUS_SIGN' : 2,
+                         'FROM_DEFAULT_COUNTRY' : 3}
 
     # Constructor
     def __init__(self):
-        self.countryCodeSource_ = CountryCodeSource['FROM_NUMBER_WITH_PLUS_SIGN']
+        self.countryCodeSource_ = PhoneNumber.CountryCodeSource['FROM_NUMBER_WITH_PLUS_SIGN']
         self.hasCountryCode = False
         self._countryCode = 0
         
@@ -23,14 +28,6 @@ class PhoneNumber:
         self.hasCountryCodeSource = False
         self._countryCodeSource = ''
 
-    # Enum - CountryCodeSource
-    CountryCodeSource = {'FROM_NUMBER_WITH_PLUS_SIGN' : 0,
-                         'FROM_NUMBER_WITH_IDD' : 1,
-                         'FROM_NUMBER_WITHOUT_PLUS_SIGN' : 2,
-                         'FROM_DEFAULT_COUNTRY' : 3}
-
-    
-    
     # required int32 country_code = 1;
     def hasCountryCode(self):
         return self.hasCountryCode
